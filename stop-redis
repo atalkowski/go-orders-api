@@ -1,0 +1,8 @@
+
+PID=`ps -ef | grep redis-server | grep -v grep | awk '{print $2;}' | head -n 1`
+if [ "$PID" = "" ]; then
+  echo "Native redis is not running"
+else
+  echo "Request to stop redis PID $PID : please wait..."
+  brew services stop redis
+fi

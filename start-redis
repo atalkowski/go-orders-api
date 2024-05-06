@@ -1,0 +1,14 @@
+
+PID=`ps -ef | grep redis-server | grep -v grep | awk '{print $2;}' | head -n 1`
+if [ "$PID" = "" ]; then
+   echo "Starting redis: please wait ...
+brew services start redis"
+  brew services start redis
+else
+  echo "redis PID is $PID .. it is already running"
+  echo "Do you want to restart it? (Y/N)"
+  read answer
+  case "$answer" in
+  y | Y) brew services restart redis;;
+  esac
+fi
